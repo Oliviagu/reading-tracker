@@ -140,7 +140,7 @@ export default function AddBookDialog({
             <Button type="button" variant="outline" onClick={onClose}>
               Cancel
             </Button>
-            <Button type="submit" variant="success">
+            <Button type="submit" variant="success" className="bg-[#009300]">
               {existingBook ? "Update Book" : "Add Book"}
             </Button>
           </DialogFooter>
