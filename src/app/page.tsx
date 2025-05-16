@@ -34,7 +34,7 @@ export default function Home() {
       ...newBook,
       id: Date.now().toString(), // Simple ID generation
     };
-    setBooks([...books, book]);
+    setBooks([book, ...books]);
   };
 
   const handleUpdateBook = (updatedBook: Book) => {
@@ -50,35 +50,34 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden bg-[#FFF5E6]">
-      {/* Animated gradient background */}
-      <h1 className="text-5xl font-bold text-center mb-6 font-bricolage relative z-10">
+      <h1 className="text-5xl md:text-6xl font-bold text-center mb-6 font-bricolage relative z-10">
         My Bookshelf
       </h1>
       <div className="flex relative">
-        <div className="absolute left-[-180px] bottom-0 h-[700px]">
+        <div className="absolute left-[-180px] bottom-[-50px] md:bottom-0 h-[700px]">
           <img
             src="/lamp.png"
             alt="Decorative lamp"
             className="w-full h-full object-contain"
           />
         </div>
-        <div className="absolute bottom-0 right-[-200px] h-[400px] z-11">
+        <div className="absolute bottom-0 right-[-200px] h-[400px] z-0 md:z-11">
           <img
-            src="/monstera3.png"
+            src="/monstera.png"
             alt="Decorative monstera plant"
             className="w-full h-full object-contain"
           />
         </div>
         {/* Frosted glass container */}
-        <div className="w-[600px] h-[600px] bg-white/30 backdrop-blur-lg rounded-xl shadow-lg pt-8 px-6 pb-6 overflow-auto relative z-10">
-          <div className="grid grid-cols-3 gap-x-2 gap-y-4 auto-rows-min">
+        <div className="w-[350px] md:w-[600px] h-[600px] bg-white/30 backdrop-blur-lg rounded-xl shadow-lg pt-6 md:pt-8  px-4 md:px-6 pb-6 overflow-auto relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-4 auto-rows-min">
             {/* Add Book Button */}
             <div
               onClick={() => {
                 setSelectedBook(undefined);
                 setIsDialogOpen(true);
               }}
-              className="w-[160px] h-[240px] rounded-lg border-2 border-dashed border-gray-400 transition-transform hover:scale-105 mx-auto bg-gray-200/50 flex items-center justify-center cursor-pointer"
+              className="w-[150px] md:w-[160px] h-[225px] md:h-[240px] rounded-lg border-2 border-dashed border-gray-400 transition-transform hover:scale-105 mx-auto bg-gray-200/50 flex items-center justify-center cursor-pointer"
             >
               <div className="text-center">
                 <div className="text-4xl mb-2">+</div>
@@ -91,7 +90,7 @@ export default function Home() {
               <div key={book.id} className="flex flex-col items-center">
                 <motion.div
                   onClick={() => handleBookClick(book)}
-                  className="w-[160px] h-[240px] rounded-lg shadow-md relative overflow-hidden cursor-pointer"
+                  className="w-[150px] md:w-[160px] h-[225px] md:h-[240px] rounded-lg shadow-md relative overflow-hidden cursor-pointer"
                   initial={{ rotate: 0 }}
                   whileHover={{
                     scale: 1.05,
@@ -126,8 +125,6 @@ export default function Home() {
         onUpdateBook={handleUpdateBook}
         existingBook={selectedBook}
       />
-      {/* Remove the animation keyframes */}
-      <style jsx global>{``}</style>
     </div>
   );
 }
